@@ -13,19 +13,18 @@ import { getPerformance } from "../services/dataService";
 export default function PerformancePanel() {
   const [data, setData] = React.useState<string[]>();
   React.useEffect(() => {
-    getPerformance().then((results: string[]) => {
-      setData(results);
-    })
+    var res = getPerformance();
+      setData(res);
   }, []);
 
   return (
     <Chart>
-      <ChartTitle text="predictive possibilities" />
+      <ChartTitle text="Fund Performance" />
       <ChartCategoryAxis>
-        <ChartCategoryAxisItem categories={["log primal", "log pol2", "SVM RBF", "SVM POL", "RF", "XGB"]} />
+        <ChartCategoryAxisItem categories={["2014", "2015", "2016", "2017", "2018", "2019", "2020"]} />
       </ChartCategoryAxis>
       <ChartSeries>
-        <ChartSeriesItem type="bar" data={data} />
+        <ChartSeriesItem type="line" data={data} />
       </ChartSeries>
       <ChartTooltip render={(e: any) => (
         

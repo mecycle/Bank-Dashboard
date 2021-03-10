@@ -6,9 +6,8 @@ import { FundInfo } from "../data/models";
 export default function InfoPanel() {
   const [fundInfo, setFundInfo] = React.useState<FundInfo>();
   React.useEffect(() => {
-    getFundInfo().then((data: FundInfo) => {
-      setFundInfo(data);
-    });
+    var res = getFundInfo();
+      setFundInfo(res);
   }, []);
 
   return (

@@ -7,7 +7,7 @@ const ChangeCell = (props: GridCellProps) => {
   const value = props.dataItem[props.field || ""];
   return (
     <td style={{ color: value > 0 ? "green" : "red" }}>
-      {value}
+      {value}%
     </td>
   )
 }
@@ -15,9 +15,8 @@ const ChangeCell = (props: GridCellProps) => {
 export default function PositionsPanel() {
   const [positions, setPositions] = React.useState<Position[]>();
   React.useEffect(() => {
-    getPositions().then((data: Position[]) => {
-      setPositions(data);
-    });
+    var res = getPositions()
+      setPositions(res);
   }, []);
 
   return (
@@ -25,14 +24,12 @@ export default function PositionsPanel() {
   data={positions}
   style={{ height: 700 }}
 >
-  <GridColumn title="CustomerId" field="CustomerId" locked={true} width={100} />
-  <GridColumn title="Surname" field="Surname" />
-  {/* <GridColumn title="Change" field="Change" cell={ChangeCell} /> */}
- 
-  <GridColumn title="CreditScore" field="CreditScore" />
-  <GridColumn title="Age" field="Age" />
-  <GridColumn title="Balance" field="Balance" />
-  <GridColumn title="Exited" field="Exited" cell={ChangeCell} />
+  <GridColumn title="Symbol" field="symbol" locked={true} width={100} />
+  <GridColumn title="Name" field="name" />
+  <GridColumn title="Change" field="day_change" cell={ChangeCell} />
+  <GridColumn title="% Change" field="change_pct" cell={ChangeCell} />
+  <GridColumn title="Volume" field="volume" />
+  <GridColumn title="Market Cap" field="market_cap" />
 </Grid>
   );
 }

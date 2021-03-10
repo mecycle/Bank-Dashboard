@@ -4,40 +4,19 @@ import { performance } from "../data/performance";
 import { positions } from "../data/positions";
 import { Allocation, Position } from "../data/models";
 
-function getRandomDelay() {
-  // return 0;
-  return 500 + (Math.random() * 2000);
-  // return 9999999999;
+//a mocked service for API integration
+export function getFundInfo(): any {
+  return info;
 }
 
-export function getFundInfo(): Promise<any> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(info);
-    }, getRandomDelay());
-  })
+export function getFundAllocation(): Allocation[] {
+  return allocation;
 }
 
-export function getFundAllocation(): Promise<Allocation[]> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(allocation);
-    }, getRandomDelay());
-  });
+export function getPerformance(): string[] {
+  return performance;
 }
 
-export function getPerformance(): Promise<string[]> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(performance);
-    }, getRandomDelay());
-  })
-}
-
-export function getPositions(): Promise<Position[]> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(positions);
-    }, getRandomDelay());
-  });
+export function getPositions(): Position[] {
+  return positions;
 }
